@@ -5,6 +5,11 @@ import { panelMachine } from './panelStateMachine';
 import { LeftSidePanel } from '../LeftSidePanel';
 import { RightSidePanel } from '../RightSidePanel';
 
+// content는 하나, 기기 상태에 따라 Drawer인지 SidePanel인지 알아서 결정된다.
+const LEFT_PANEL_CONTENT = '왼쪽 패널 콘텐츠';
+const RIGHT_PANEL_CONTENT = '오른쪽 패널 콘텐츠';
+const DRAWER_CONTENT = '다른 드로워 콘텐츠';
+
 export function DiversePanels() {
   const [state, send] = useMachine(panelMachine)
 
@@ -50,18 +55,20 @@ export function DiversePanels() {
           </div>
         </LeftSidePanel>
 
+        {/* 메세지 보내는 곳 */}
         <div style={{ flex: 1 }}>
           <div style={{ display: 'flex', gap: '5px', justifyContent: 'space-between', width: '100%' }}>
             <button onClick={() =>
+              // 한 곳에서 하나의 이벤트만 실행하지만, 상태에 따라 알아서 Drawer, SidePanel 중 하나가 열리게 된다.
               isLeftSidePanelOpen
                 ? send({ type: 'CLOSE_LEFT_PANEL' })
-                : send({ type: 'OPEN_LEFT_PANEL', content: '왼쪽 패널' })
+                : send({ type: 'OPEN_LEFT_PANEL', content: LEFT_PANEL_CONTENT })
             }>
               왼쪽 패널 {isLeftSidePanelOpen ? '닫기' : '열기'}
             </button>
 
             <button onClick={() => {
-              send({ type: 'OPEN_DRAWER', content: '다른 드로워' })
+              send({ type: 'OPEN_DRAWER', content: DRAWER_CONTENT })
             }}>
               다른 드로워 열기
             </button>
@@ -69,11 +76,12 @@ export function DiversePanels() {
             <button onClick={() =>
               isRightSidePanelOpen
                 ? send({ type: 'CLOSE_RIGHT_PANEL' })
-                : send({ type: 'OPEN_RIGHT_PANEL', content: '오른쪽 패널' })
+                : send({ type: 'OPEN_RIGHT_PANEL', content: RIGHT_PANEL_CONTENT })
             }>
               오른쪽 패널 {isRightSidePanelOpen ? '닫기' : '열기'}
             </button>
           </div>
+          {/* 메세지 보내는 곳 */}
 
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <h1 style={{ textAlign: 'center' }}>가운데 패널</h1>

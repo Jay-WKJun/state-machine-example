@@ -1,4 +1,4 @@
-// state machine 설계
+// Drawer와 SidePanel 정책
 
 // sidepanel은 좌우 하나씩 내용이 들어간다. string이 들어가있으면 open, 무엇이 들어가는지는 string으로 판단된다.
 // drawer는 한번에 하나만 나타날 수 있다.
@@ -21,6 +21,7 @@ import { setup, assign } from 'xstate';
 
 type DrawerDirection = 'left' | 'right';
 
+// 객체의 메소드 인터페이스와 같다.
 type PanelEvent =
   | { type: 'SYNC_WIDTH'; width: number }
   | { type: 'OPEN_LEFT_PANEL'; content: string }
@@ -42,6 +43,7 @@ export const panelMachine = setup({
     },
     events: {} as PanelEvent
   },
+  // 객체의 private method와 같다.
   actions: {
     syncWidth: assign({
       width: ({ context, event }) => {

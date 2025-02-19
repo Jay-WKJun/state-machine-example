@@ -1,5 +1,5 @@
 import './App.css'
-import { DiversePanels } from './xstateExample/diversePanels'
+import { DiversePanels } from './xstateExample'
 
 function App() {
   return (

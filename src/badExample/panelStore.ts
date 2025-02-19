@@ -79,7 +79,7 @@ export const usePanelStore = create<PanelState>((set) => ({
 
   openLeftPanel: (content) =>
     set((prev) => {
-      // 로직이 3개뿐이고 단순해서 그렇지만 state가 더 늘어난다면?
+      // 로직이 3개뿐이고 단순해서 이정도이지만 state가 더 늘어난다면?
       if (prev.state === 'small') {
         return {
           drawer: {
@@ -97,7 +97,7 @@ export const usePanelStore = create<PanelState>((set) => ({
 
   closeLeftPanel: () =>
     set((prev) => {
-      // 로직이 3개뿐이고 단순해서 그렇지만 state가 더 늘어난다면?
+      // 로직이 3개뿐이고 단순해서 이정도이지만 state가 더 늘어난다면?
       if (prev.state === 'small') {
         return {
           drawer: undefined
@@ -109,7 +109,7 @@ export const usePanelStore = create<PanelState>((set) => ({
 
   openRightPanel: (content) =>
     set((prev) => {
-      // 로직이 3개뿐이고 단순해서 그렇지만 state가 더 늘어난다면?
+      // 로직이 3개뿐이고 단순해서 이정도이지만 state가 더 늘어난다면?
       if (prev.state === 'large') {
         return {
           sidePanel: {
@@ -129,7 +129,7 @@ export const usePanelStore = create<PanelState>((set) => ({
 
   closeRightPanel: () =>
     set((prev) => {
-      // 로직이 3개뿐이고 단순해서 그렇지만 state가 더 늘어난다면?
+      // 로직이 3개뿐이고 단순해서 이정도이지만 state가 더 늘어난다면?
       if (prev.state === 'large') {
         return {
           sidePanel: { ...prev.sidePanel, right: undefined }

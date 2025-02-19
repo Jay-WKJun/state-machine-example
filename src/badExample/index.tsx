@@ -4,9 +4,11 @@ import { usePanelStore } from './panelStore';
 import { LeftSidePanel } from '../LeftSidePanel';
 import { RightSidePanel } from '../RightSidePanel';
 
-interface BadExampleProps {}
+const LEFT_PANEL_CONTENT = '왼쪽 패널 콘텐츠';
+const RIGHT_PANEL_CONTENT = '오른쪽 패널 콘텐츠';
+const DRAWER_CONTENT = '다른 드로워 콘텐츠';
 
-export function BadExample({}: BadExampleProps) {
+export function BadExample() {
   const {
     width,
     sidePanel,
@@ -22,7 +24,7 @@ export function BadExample({}: BadExampleProps) {
 
   React.useEffect(() => {
     setWidth(window.innerWidth);
-  }, []);
+  }, [setWidth]);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -34,7 +36,7 @@ export function BadExample({}: BadExampleProps) {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [setWidth]);
 
   const leftSidePanelContent = sidePanel.left;
   const rightSidePanelContent = sidePanel.right;
@@ -57,32 +59,34 @@ export function BadExample({}: BadExampleProps) {
           </div>
         </LeftSidePanel>
 
+        {/* 메세지 보내는 곳 */}
         <div style={{ flex: 1 }}>
           <div style={{ display: 'flex', gap: '5px', justifyContent: 'space-between', width: '100%' }}>
             <button onClick={() =>
               isLeftSidePanelOpen
                 ? closeLeftPanel()
-                : openLeftPanel('왼쪽 패널')
+                : openLeftPanel(LEFT_PANEL_CONTENT)
             }>
               왼쪽 패널 {isLeftSidePanelOpen ? '닫기' : '열기'}
             </button>
 
-            <button onClick={() => openDrawer('다른 드로워')}>
+            <button onClick={() => openDrawer(DRAWER_CONTENT)}>
               다른 드로워 열기
             </button>
 
             <button onClick={() =>
               isRightSidePanelOpen
                 ? closeRightPanel()
-                : openRightPanel('오른쪽 패널')
+                : openRightPanel(RIGHT_PANEL_CONTENT)
             }>
               오른쪽 패널 {isRightSidePanelOpen ? '닫기' : '열기'}
             </button>
           </div>
+          {/* 메세지 보내는 곳 */}
 
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
             <h1 style={{ textAlign: 'center' }}>가운데 패널</h1>
-            <h1 style={{ textAlign: 'center' }}>나쁜 예시입니다.</h1>
+            <h3 style={{ textAlign: 'center' }}>Zustand 예시</h3>
           </div>
         </div>
 
