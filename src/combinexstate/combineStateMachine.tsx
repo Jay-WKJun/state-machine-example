@@ -2,11 +2,7 @@ import React from 'react';
 import { parentMachine } from './machine1';
 import { useMachine } from '@xstate/react'
 
-interface CombineStateMachineProps {
-
-}
-
-export function CombineStateMachine({  }: CombineStateMachineProps) {
+export function CombineStateMachine() {
   const [state, send] = useMachine(parentMachine);
 
   console.log('state',state)
@@ -25,8 +21,6 @@ export function CombineStateMachine({  }: CombineStateMachineProps) {
         </div>
       )}
       <div>
-        <button onClick={() => send({ type: 'ADD_EVENT', number: 1 })}>+</button>
-        <button onClick={() => send({ type: 'DIVIDE_EVENT', number: 1 })}>-</button>
         <button onClick={() => send({ type: 'PARENT_INIT' })}>부모 초기화</button>
         <button onClick={() => send({ type: 'ADD_TO_PARENT', number: 1 })}>부모에게 더하기</button>
         <button onClick={() => send({ type: 'ADD_TO_CHILD', number: 1 })}>자식에게 더하기</button>
