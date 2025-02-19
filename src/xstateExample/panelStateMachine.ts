@@ -12,7 +12,7 @@
 // drawer는 하나만 가능
 
 // state: large
-// sidePanel을 할 수 있음.
+// sidePanel 양쪽 사용
 // drawer는 하나만 가능
 
 // state 변경될 때: sidePanel과 drawer는 모두 닫힘.
