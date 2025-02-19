@@ -31,6 +31,9 @@ type PanelEvent =
   | { type: 'OPEN_DRAWER'; content: string; direction?: DrawerDirection }
   | { type: 'CLOSE_DRAWER' };
 
+// 👍 Point
+// 외부에 노출된 event와 내부 action의 코드가 state에 따라 격리돼있다. = 격리된 하나의 state만 신경쓰면 됨
+// state에 따라 event의 노출이 알아서 관리됨. (응집도 Up)
 export const panelMachine = setup({
   types: {
     context: {} as {

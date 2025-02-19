@@ -22,6 +22,9 @@ interface PanelState {
   closeDrawer: () => void;
 }
 
+// ❌ Bad Point
+// state가 늘어난다면, 관여된 모든 로직을 수정해야 한다. (하지만, state machine은 새로운 state에 새로운 이벤트를 정의만 하면 된다.)
+// state에 따른 method 실행 여부(validate) 또한 모두 관리가 필요.
 export const usePanelStore = create<PanelState>((set) => ({
   state: 'small',
   width: 0,
