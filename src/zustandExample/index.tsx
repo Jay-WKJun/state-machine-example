@@ -8,9 +8,8 @@ const LEFT_PANEL_CONTENT = '왼쪽 패널 콘텐츠';
 const RIGHT_PANEL_CONTENT = '오른쪽 패널 콘텐츠';
 const DRAWER_CONTENT = '다른 드로워 콘텐츠';
 
-export function BadExample() {
+export function ZustandExample() {
   const {
-    width,
     sidePanel,
     drawer,
     setWidth,
